@@ -99,6 +99,43 @@ function updateClock(){
 
 setInterval(updateClock,1000);
 updateClock();
+    .topbar{
+    position:absolute;
+    top:0;
+    width:100%;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    background:rgba(0,0,0,0.4);
+}
+
+.window{
+    width:350px;
+    height:350px;
+    border:8px solid #888;
+    border-radius:50%;
+    overflow:hidden;
+    margin-bottom:20px;
+    background:radial-gradient(circle,#091540,#000);
+}
+
+.planet{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:linear-gradient(#4facfe,#00f2fe);
+    margin:100px auto;
+}
+
+.hidden{
+    display:none;
+}
+
+.star{
+    font-size:40px;
+    cursor:pointer;
+    margin-top:20px;
+}
 </script>
 
 </body>
