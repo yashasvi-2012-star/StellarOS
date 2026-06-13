@@ -47,17 +47,59 @@
 </head>
 <body>
 
-    <h1>🚀 StellarOS</h1>
+<div class="stars"></div>
 
-    <p>
-        Welcome to StellarOS.
-        Explore stars, planets, and galaxies through
-        an interactive mission-control experience.
-    </p>
+<div class="topbar">
+    <h2>🚀 StellarOS</h2>
+    <span id="clock"></span>
+</div>
 
-    <button onclick="alert('Star map coming soon!')">
-        Start Exploring
-    </button>
+<div class="window">
+    <div class="planet"></div>
+</div>
+
+<h1>StellarOS</h1>
+
+<p>
+    Navigate the cosmos from your spacecraft.
+    Discover stars, planets, nebulae, and distant galaxies.
+</p>
+
+<button onclick="openMap()">
+    Launch Navigation System
+</button>
+
+<div id="map" class="hidden">
+    <h2>Cosmic Map</h2>
+
+    <div class="star"
+         onclick="showInfo('Sirius','8.6 light years away')">
+        ★
+    </div>
+
+    <div id="info"></div>
+</div>
+
+<script>
+function openMap(){
+    document.getElementById("map").classList.remove("hidden");
+}
+
+function showInfo(name,distance){
+    document.getElementById("info").innerHTML =
+    `<h3>${name}</h3>
+     <p>${distance}</p>`;
+}
+
+function updateClock(){
+    const now=new Date();
+    document.getElementById("clock").innerText=
+    now.toLocaleTimeString();
+}
+
+setInterval(updateClock,1000);
+updateClock();
+</script>
 
 </body>
 </html>
