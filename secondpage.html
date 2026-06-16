@@ -1130,7 +1130,7 @@ viewport.addEventListener("pointermove", event => {
     applyTransform();
 });
 
-viewport.addEventLisTener("pointerup", event => {
+viewport.addEventListener("pointerup", event => {
     if (!dragging) {
         return;
     }
@@ -1163,6 +1163,5 @@ setInterval(updateClock, 1000);
 </script>
 </body>
 </html>
-
 
 
