@@ -581,7 +581,7 @@ button {
     </div>
 
     <aside class="help">
-        Drag to pan, use the controls to zoom, and select planets. Planets with moons reveal their moon system first; select again for full details.
+        Drag to pan, use the controls on top of screen in the header to zoom, and select planets for full details. Planets with moons also reveal their moon system.
     </aside>
 
     <aside class="left-panel">
@@ -969,7 +969,6 @@ function createPlanets() {
                 revealedPlanet = body.id;
                 const location = pointOnOrbit(body.orbit, 0);
                 setView(Math.max(scale, 0.95), location.x, location.y);
-                return;
             }
             revealInfo(body);
         });
@@ -1115,6 +1114,9 @@ document.getElementById("leaveSolar").addEventListener("click", event => {
 closePanel.addEventListener("click", () => panel.classList.add("hidden"));
 
 viewport.addEventListener("pointerdown", event => {
+    if (event.target.closest("button")) {
+        return;
+    }
     dragging = true;
     viewport.setPointerCapture(event.pointerId);
     dragStart = { x: event.clientX, y: event.clientY };
@@ -1128,7 +1130,10 @@ viewport.addEventListener("pointermove", event => {
     applyTransform();
 });
 
-viewport.addEventListener("pointerup", event => {
+viewport.addEventLisTener("pointerup", event => {
+    if (!dragging) {
+        return;
+    }
     dragging = false;
     viewport.releasePointerCapture(event.pointerId);
 });
@@ -1147,6 +1152,7 @@ function updateClock() {
     });
 }
 
+
 createPlanets();
 createAsteroids();
 createStars();
@@ -1157,3 +1163,6 @@ setInterval(updateClock, 1000);
 </script>
 </body>
 </html>
+
+
+
